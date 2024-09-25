@@ -4,9 +4,9 @@
 
 The first step was to filter the provided data to identify the specific options being traded, based on the **out-of-the-money (OTM) percentage**. Since the problem assumes that the **forward price** of the underlying index equals the **spot price** today, and all the tasks involve **call options**, the strike price of the desired option is calculated as:
 
-\[
+$
 \text{Strike Price} = \text{Spot Price} \times (1 + \text{OTM percentage})
-\]
+$
 
 The specific option is then selected as the one with the closest strike price to this value.
 
@@ -30,9 +30,9 @@ Delta measures the **sensitivity of the option price** to movements in the under
 
 The **finite difference method** is a numerical approximation of the derivative:
 
-\[
+$
 \Delta = \frac{\text{Option Price Change}}{\text{Underlying Price Change}}
-\]
+$
 
 In this method, the **first derivative** (delta) is approximated by dividing the change in the option price by the change in the index price. This method is implemented in the code due to its empirical nature.
 
@@ -42,11 +42,11 @@ However, one could use the **Black-Scholes model** to compute delta theoreticall
 
 ## Implied Volatility Calculation
 
-To calculate the **implied volatility** (\(\sigma\)), the **Black-Scholes model** is used with the **Newton-Raphson method** for root-finding.
+To calculate the **implied volatility** ($\sigma$), the **Black-Scholes model** is used with the **Newton-Raphson method** for root-finding.
 
 ### Black-Scholes Option Pricing
 
-The Black-Scholes model provides a formula for the price of a European call option based on inputs like the spot price of the underlying index, strike price, risk-free interest rate, implied volatility, and time to expiry. However, since we are given the market price of the option, we need to **invert** the Black-Scholes formula to solve for \(\sigma\).
+The Black-Scholes model provides a formula for the price of a European call option based on inputs like the spot price of the underlying index, strike price, risk-free interest rate, implied volatility, and time to expiry. However, since we are given the market price of the option, we need to **invert** the Black-Scholes formula to solve for ($\sigma$).
 
 Since the inverse of the Black-Scholes formula is not analytically tractable, I used the **Newton-Raphson method**, which iteratively updates the volatility estimate based on the gradients (vega) and the difference between the observed market price and the calculated price.
 
