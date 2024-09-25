@@ -32,7 +32,7 @@ The **finite difference method** is a numerical approximation of the derivative:
 Delta = Option Price Change / Underlying Price Change.
 
 
-In this method, the **first derivative** Delta) is approximated by dividing the change in the option price by the change in the index price. This method is implemented in the code due to its empirical nature.
+In this method, the **first derivative** (Delta) is approximated by dividing the change in the option price by the change in the index price. This method is implemented in the code due to its empirical nature.
 
 However, one could use the **Black-Scholes model** to compute delta theoretically. For this, we first compute the **implied volatility**, which is again calculated using the **Black-Scholes model**.
 
@@ -44,7 +44,7 @@ To calculate the **implied volatility**, the **Black-Scholes model** is used wit
 
 ### Black-Scholes Option Pricing
 
-The Black-Scholes model provides a formula for the price of a European call option based on inputs like the spot price of the underlying index, strike price, risk-free interest rate, implied volatility, and time to expiry. However, since we are given the market price of the option, we need to **invert** the Black-Scholes formula to solve for (sigma).
+The Black-Scholes model provides a formula for the price of a European call option based on inputs like the spot price of the underlying index, strike price, risk-free interest rate, implied volatility, and time to expiry. However, since we are given the market price of the option, we need to **invert** the Black-Scholes formula to solve for sigma.
 
 Since the inverse of the Black-Scholes formula is not analytically tractable, I used the **Newton-Raphson method**, which iteratively updates the volatility estimate based on the gradients (vega) and the difference between the observed market price and the calculated price.
 
